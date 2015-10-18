@@ -1,5 +1,6 @@
-./sender.sh "http://www.google.com" &
-./sender.sh "http://www.facebook.com" &
-./sender.sh "http://www.twitter.com" &
+for target in $(./receiver.sh $2); do
+  arguments=`echo $target | sed "s/|/ /g"`
+  ./sender.sh $1 $arguments &
+done
 
 wait
